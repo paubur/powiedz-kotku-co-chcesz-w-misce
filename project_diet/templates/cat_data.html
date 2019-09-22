@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block description %}
+    <h2>Data:</h2>
+{% endblock %}
+{% block content %}
+    <ul>
+        <li>Name: {{cat.name}}</li>
+        <li>Age: {{cat.age}}</li>
+        <li>Birthmark: {{cat.birthmark}}</li>
+        <li>Medical condition: {{cat.medical_condition}}</li>
+        {%  if cat.diet is True %}
+        <li>Diet: yes</li>
+        <li>Diet description: {{cat.diet_description}}</li>
+        {% else %}
+            <li>Diet: no</li>
+        {% endif %}
+    </ul>
+
+    <br>
+
+    <div><a href="/food_list/{{ cat.id }}" class="links_form">Food</a></div>
+    <a href="/cats/" class="links_form">Cancel</a>
+
+{% endblock %}

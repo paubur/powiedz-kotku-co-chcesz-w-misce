@@ -1,0 +1,56 @@
+<!doctype html>
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <!--===============================================================================================-->
+    </head>
+    <body>
+{#        <img src="{% static 'logo.png' %}" alt="piękne logo cl">#}
+    	<div class="bg-contact3" style="background-image: url('/static/images/bg-01.jpg');">
+		    <div class="container-contact3">
+			    <div class="wrap-contact3">
+                    {% block description %}{% endblock %}
+
+                    {% block content %} {% endblock %}
+                </div>
+                <div style="vertical-align: bottom; width:100%">
+                {% block footer %}
+                    <p>User: {{ request.user }}</p>
+                    <p>
+                    {% if not request.user.is_authenticated %}
+                        <a href="{% url 'login' %}" class="links">Login</a>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'logout' %}" class="links">Logout</a>
+                    {% endif %}
+                    <span>|</span>
+                    <a href="{% url 'add_user' %}" class="links"> Add new user</a></p>
+                    <br><br>
+                    <p>version: {{version.0}}.{{version.1}}</p>
+                    <p>{{time}}</p>
+                {% endblock %}
+                </div>
+		    </div>
+	    </div>
+    </body>
+</html>
+

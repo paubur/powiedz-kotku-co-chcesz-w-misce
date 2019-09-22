@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block description %}
+    <h2>List of companies:</h2>
+{% endblock %}
+
+{% block content %}
+    <ol>
+    {% for food in food_list %}
+        <li><a href="/{{ food.id }}/composition" class="links_form">{{food.company}} - {{food.name}}</a></li>
+    {% endfor %}
+    </ol>
+
+
+    <p><a href="{% url 'add_food' cat_id=cat_id %}" class="links_form">Add food</a></p>
+
+    <p><a href="{% url 'compare_composition' cat_id=cat_id%}" class="links_form">Composition comparison</a></p>
+
+    <a href="/cats/{{cat_name}}" class="links_form">Cancel</a>
+
+{% endblock %}

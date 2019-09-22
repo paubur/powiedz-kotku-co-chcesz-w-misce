@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block description %}
+    <h2>Content comparison:</h2>
+    <br>
+{% endblock %}
+
+{% block content %}
+
+{#    <style type="text/css">#}
+{#    .tg  {border-collapse:collapse;border-spacing:0;width: 575px;}#}
+{#    .tg td{font-family:Poppins-Regular, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}#}
+{#    .tg th{font-family:Poppins-Medium, sans-serif;font-size:16px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:2px;overflow:hidden;word-break:normal;border-color:black;}#}
+{#    .tg .tg-0lax{text-align:center;vertical-align:top}#}
+{#    .tg .tg-60hs{font-size:20px;text-align:left;vertical-align:top}#}
+{#    </style>#}
+    <table class="tg">
+        <tr>
+            <th class="tg-0lax">Marka</th>
+            <th class="tg-0lax">Smak</th>
+            <th class="tg-0lax">Składnik</th>
+            <th class="tg-0lax">Zawartość w %</th>
+
+        </tr>
+        {% for food in food_list %}
+            {% for content in food.content_set.all %}
+                    <tr>
+                        <th class="tg-0lax">{{ food.company }}</th>
+                        <th class="tg-0lax">{{ food.name }}</th>
+                        <th class="tg-0lax">{{ content.composition.name }}</th>
+                        <th class="tg-0lax">{{ content.quantity }}</th>
+                    </tr>
+            {% endfor %}
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <div><a href="/food_list/{{ cat_id }}" class="links_form">Cancel</a></div>
+{% endblock %}

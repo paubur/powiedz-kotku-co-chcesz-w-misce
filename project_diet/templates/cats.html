@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block description %}
+    <h2>List of cats:</h2>
+{% endblock %}
+
+{% block content %}
+    <ol>
+    {% for cat in cats %}
+        <li><a href="/cats/{{cat.name}}" class="links_form">{{cat.name}}</a></li>
+    {% endfor %}
+    </ol>
+
+    <p><a href="{% url 'add_cat' %}" class="links_form">Add cat</a></p>
+
+
+{% endblock %}

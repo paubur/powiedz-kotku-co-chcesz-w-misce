@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block description %}
+    <h2>Composition comparison:</h2>
+    <br>
+{% endblock %}
+
+{% block content %}
+
+    <style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;width: 575px;}
+    .tg td{font-family:Poppins-Regular, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg th{font-family:Poppins-Medium, sans-serif;font-size:16px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:2px;overflow:hidden;word-break:normal;border-color:black;}
+    .tg .tg-0lax{text-align:center;vertical-align:top}
+    .tg .tg-60hs{font-size:20px;text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+        <tr>
+            <th class="tg-0lax">Company</th>
+            <th class="tg-0lax">Name</th>
+            {% for composition in compositions %}
+
+                    <th class="tg-0lax">{{ composition.name }}</th>
+
+            {% endfor %}
+        </tr>
+        {% for food_quantity in quantity_food_composition %}
+                <tr>
+                    <td class="tg-0lax">{{ food_quantity.food.company }}</td>
+                    <td class="tg-0lax">{{ food_quantity.food.name }}</td>
+                    {%  for quantity in food_quantity.quantity %}
+                        <td class="tg-0lax">{{ quantity }}</td>
+                    {% endfor %}
+                </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <div><a href="/food_list/{{ cat_id }}" class="links_form">Cancel</a></div>
+{% endblock %}
